@@ -49,10 +49,10 @@ Open 'app.py' and look for the 'db_config' dictionary (approx. line 11):
 
 5. HOW TO LAUNCH THE APP
 ------------------------
-1. Navigate to the project folder in your terminal:
+1. Navigate to the project folder in your terminal. (For example in Linux):
    cd path/to/project_folder
 
-2. Run the Flask application:
+2. Run the Flask application. (For example in Linux):
    python3 app.py
 
 3. You will see output indicating the server is running (usually on http://127.0.0.1:5000).
