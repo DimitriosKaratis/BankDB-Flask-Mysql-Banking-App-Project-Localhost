@@ -9,10 +9,10 @@ BankDB is a full-stack banking platform designed for secure and reliable financi
 
 ### 🌐 Live Deployment
 The application is hosted and accessible online:
-👉 **[Live Demo on Render](https://flask-mysql-bank-project.onrender.com/)** *(Note: Initial loading may take 30-50s due to Render's free-tier spin-up. Database hosted on Aiven Console).*
+👉 **[Live Demo on Render](https://flask-mysql-bank-project.onrender.com/)** *(Initial loading may take 30-50s due to Render's free-tier spin-up. Database hosted on Aiven Console).*
 
 > [!NOTE]
-> The live version linked above is maintained in a **separate repository** optimized for cloud deployment. The instructions below (in this repository) focus on the **local implementation** using `localhost` and a local MySQL instance.
+> The live version linked above is maintained in a **separate repository** optimized for cloud deployment. The instructions below focus on the **local implementation** using `localhost` and a local MySQL instance.
 
 ---
 
