@@ -51,7 +51,7 @@ Ensure you have the following installed:
 - Required Libraries:
   ```bash
   pip install flask mysql-connector-python
-## ⚙️ 2. Database Setup (CRITICAL STEP)
+### 2. Database Setup (CRITICAL STEP)
 The application relies on a MySQL database named **'BankDB'**. You must set this up manually because the provided SQL dump file contains table structures but might not create the database itself.
 
 ### Execution Steps:
@@ -63,9 +63,8 @@ The application relies on a MySQL database named **'BankDB'**. You must set this
    
 Step 3: Create the database:
 
-  ```SQL
-  CREATE DATABASE IF NOT EXISTS BankDB;
-  EXIT;
+```sql CREATE DATABASE IF NOT EXISTS BankDB;```
+
 
 Step 4: Import the provided SQL dump (Dump20251219.sql) into the database (Run this from the project directory where the dump file is located):
 
