@@ -1,4 +1,4 @@
-# BankDB: A Banking Management System 
+# 🏦 BankDB: A Banking Management System 
 
 [![MySQL](https://img.shields.io/badge/Database-MySQL-blue.svg)](https://www.mysql.com/)
 [![Python](https://img.shields.io/badge/Backend-Python_Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
