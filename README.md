@@ -76,7 +76,7 @@ EXIT;
 ```
 
 
-4. **Import the provided SQL dump (Dump20251219.sql) into the database (Run this from the project directory where the dump file is located):**
+4. **Import the provided SQL dump (Dump20251219.sql) into the database** (Run this from the project directory where the dump file is located):
 
  ```bash
 mysql -u root -p BankDB < Dump20251219.sql
