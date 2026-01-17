@@ -16,30 +16,26 @@ The application is hosted and accessible online:
 
 ---
 
-## 💻 Local Implementation & Setup
-Follow the steps below to run the application on your machine using a local environment.
-
----
-
 ## 🏗️ Technical Architecture & Security
 
 ### 1. Database & Schema Design
 The system is built on a **MySQL** database designed in **Third Normal Form (3NF)** to ensure zero data redundancy.
-- **Relational Integrity:** Strict use of Foreign Keys and constraints across 10+ tables.
-- **Optimized Retrieval:** Extensive use of SQL Views (e.g., `customer_accounts`, `accounts_balance`) to simplify complex data reporting.
 
+#### **Enhanced Entity-Relationship (EER) Diagram**
+![Database Schema](EER_BankDB.png)
 
+* **Relational Integrity:** Strict use of Foreign Keys and constraints across 10+ tables.
+* **Optimized Retrieval:** Extensive use of SQL Views (e.g., `customer_accounts`, `accounts_balance`) to simplify complex data reporting.
 
 ### 2. Security & Reliability Features
-- **ACID Transactions:** Money transfers implement full ACID properties. Using `conn.start_transaction()`, `commit()`, and `rollback()`, the system ensures that funds are never lost or duplicated in case of network or hardware failure.
-- **SQL Injection Protection:** All database interactions utilize **Prepared Statements** to sanitize user input.
-- **Manual ID Calculation:** Due to the lack of `AUTO_INCREMENT` in certain legacy schema parts, the application dynamically calculates the next `TransactionID` using `MAX+1` logic to ensure absolute uniqueness.
-- **Double Transaction Strategy:** Credit card payments are handled as synchronized two-step processes: re-adjusting the card's available balance while simultaneously deducting the amount from the linked bank account.
+* **ACID Transactions:** Money transfers implement full ACID properties. Using `conn.start_transaction()`, `commit()`, and `rollback()`, the system ensures that funds are never lost or duplicated in case of failure.
+* **SQL Injection Protection:** All database interactions utilize **Prepared Statements** to sanitize user input.
+* **Manual ID Calculation:** The application dynamically calculates the next `TransactionID` using `MAX+1` logic to ensure absolute uniqueness.
+* **Double Transaction Strategy:** Credit card payments are handled as synchronized two-step processes: re-adjusting the card's available balance while simultaneously deducting the amount from the linked bank account.
 
 ---
 
 ## 💻 User Features
-
 * **Dashboard:** View real-time balances for all linked accounts (Savings, Checking, etc.).
 * **Money Transfer:** Execute secure capital movements between accounts.
 * **Credit Card Management:** Monitor credit limits and pay off outstanding debt.
@@ -50,15 +46,14 @@ The system is built on a **MySQL** database designed in **Third Normal Form (3NF
 
 ## 🛠️ Installation & Local Setup
 
-Follow these steps to run the application on your local machine:
-
 ### 1. Prerequisites
 Ensure you have the following installed:
 - **Python 3.x**
 - **MySQL Server**
 - Required Libraries:
-  ```bash
-  pip install flask mysql-connector-python
+```bash
+pip install flask mysql-connector-python
+```
 ### 2. Database Setup (CRITICAL STEP)
 The application relies on a MySQL database named **'BankDB'**. You must set this up manually because the provided SQL dump file contains table structures but might not create the database itself.
 
