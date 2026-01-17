@@ -104,34 +104,35 @@ python3 app.py
 Open your web browser and go to: http://127.0.0.1:5000
 
 ### 📖 User Manual
-A. LOGIN
-Authenticate using a Customer TIN (Tax Identification Number).
 
-Example Valid TIN: 123456789 (User: Maria Papadopoulou).
+---
 
-Enter any password to proceed.
+#### **A. Login**
+* **Authentication:** Use a **Customer TIN** (Tax Identification Number) to log in.
+* **Credentials:** * **Example Valid TIN:** `123456789` (User: Maria Papadopoulou).
+    * **Password:** Enter any password to proceed (Development mode).
 
-B. DASHBOARD
-Lists all accounts belonging to the customer with dynamic balances calculated via SQL Views (accounts_balance).
+#### **B. Dashboard**
+* **Account Overview:** View all accounts linked to your profile.
+* **Live Balances:** Real-time balances are dynamically calculated using specialized SQL Views (`accounts_balance`).
 
-C. MONEY TRANSFER (TRANSACTION)
-ACID Integrity: Uses start_transaction(), commit(), and rollback() to ensure money is never lost.
+#### **C. Money Transfer (Transaction)**
+* **Reliability (ACID):** The system uses `start_transaction()`, `commit()`, and `rollback()` to ensure that no money is ever "lost" during a transfer.
+* **Process:** Choose your source account, enter the recipient's Account Number, and specify the amount.
 
-Select source account, enter recipient Account Number and amount.
+#### **D. Pay Loan & Credit Card**
+* **Pay Loan:** Monitor your debt in real-time and make payments directly from your accounts.
+* **Pay Credit Card:** Features a **Double Transaction Strategy** to simultaneously update credit limits and deduct the payment amount.
 
-D. PAY LOAN & CREDIT CARD
-Pay Loan: Real-time tracking of debt and account-based payments.
+#### **E. Branch Locator & Settings**
+* **Branches:** Access a full directory of all physical bank branch locations.
+* **Settings:** * Update your **Physical Address**.
+    * Manage and add multiple **Email aliases**.
 
-Pay Credit Card: Uses a Double Transaction Strategy to re-adjust credit limits and deduct funds simultaneously.
-
-E. BRANCH LOCATOR & SETTINGS
-Branches: Full directory of physical bank branches.
-
-Settings: Update Physical Address and manage multiple Email aliases.
+---
 
 ### ⚙️ Technical Implementation Details
-Security: Prepared Statements for ALL queries to prevent SQL Injection.
 
-ID Management: Manual calculation of next TransactionID (MAX + 1) to ensure uniqueness.
-
-Frontend: Bootstrap 5 & Jinja2 templates.
+* **Security:** Implemented **Prepared Statements** for *every* database query to provide 100% protection against SQL Injection.
+* **ID Management:** Uses a manual calculation for the next `TransactionID` ($MAX + 1$) to maintain strict uniqueness and sequence control.
+* **Frontend Stack:** Built with **Bootstrap 5** for responsive design and **Jinja2** for dynamic server-side templating.
