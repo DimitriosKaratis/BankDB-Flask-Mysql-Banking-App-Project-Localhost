@@ -1,4 +1,4 @@
-# Data Bases Project: BankDB. A Banking Management System 
+# BankDB: A Banking Management System 
 
 [![MySQL](https://img.shields.io/badge/Database-MySQL-blue.svg)](https://www.mysql.com/)
 [![Python](https://img.shields.io/badge/Backend-Python_Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
@@ -13,55 +13,72 @@ The application is hosted and accessible online:
 
 ---
 
-## 🏗️ Technical Architecture
+## 🏗️ Technical Architecture & Security
 
 ### 1. Database & Schema Design
-The backend is powered by a **MySQL** database designed in **Third Normal Form (3NF)** to ensure zero data redundancy and maximum integrity.
-- **Relational Integrity:** Strict use of Foreign Keys and Constraints across 10+ tables.
-- **Security:** Implementation of **Prepared Statements** in all SQL queries to prevent SQL Injection attacks.
-- **Views:** Optimized data retrieval through custom views like `customer_accounts` and `accounts_balance`.
+The system is built on a **MySQL** database designed in **Third Normal Form (3NF)** to ensure zero data redundancy.
+- **Relational Integrity:** Strict use of Foreign Keys and constraints across 10+ tables.
+- **Optimized Retrieval:** Extensive use of SQL Views (e.g., `customer_accounts`, `accounts_balance`) to simplify complex data reporting.
 
 
 
-### 2. Transaction Logic & Reliability
-Financial accuracy is guaranteed through:
-- **ACID Transactions:** Money transfers utilize `start_transaction()`, `commit()`, and `rollback()` mechanisms to ensure that no funds are lost in case of a system or network failure.
-- **Double Transaction Strategy:** Credit card payments are handled as a synchronized two-step process: adjusting the card's available balance while simultaneously deducting funds from the linked bank account.
-- **Manual ID Calculation:** To ensure uniqueness without relying on specific DB auto-increments, the app dynamically calculates the next `TransactionID` using `MAX+1` logic.
-
----
-
-## 💻 Features & User Manual
-
-### For Customers:
-* **Dashboard:** Real-time view of all bank accounts (Savings, Checking, etc.) and current balances.
-* **Money Transfer:** Secure fund movement between accounts by providing the recipient's Account ID.
-* **Credit Card Management:** Pay off outstanding debt and monitor remaining credit limits.
-* **Branch Locator:** Find physical bank branches by city or name.
-* **Settings:** Manage personal profile, update physical addresses, and handle multiple email aliases.
+### 2. Security & Reliability Features
+- **ACID Transactions:** Money transfers implement full ACID properties. Using `conn.start_transaction()`, `commit()`, and `rollback()`, the system ensures that funds are never lost or duplicated in case of network or hardware failure.
+- **SQL Injection Protection:** All database interactions utilize **Prepared Statements** to sanitize user input.
+- **Manual ID Calculation:** Due to the lack of `AUTO_INCREMENT` in certain legacy schema parts, the application dynamically calculates the next `TransactionID` using `MAX+1` logic to ensure absolute uniqueness.
+- **Double Transaction Strategy:** Credit card payments are handled as synchronized two-step processes: re-adjusting the card's available balance while simultaneously deducting the amount from the linked bank account.
 
 ---
 
-## 🛠️ Local Installation & Setup
+## 💻 User Features
+
+* **Dashboard:** View real-time balances for all linked accounts (Savings, Checking, etc.).
+* **Money Transfer:** Execute secure capital movements between accounts.
+* **Credit Card Management:** Monitor credit limits and pay off outstanding debt.
+* **Branch Locator:** Search for physical bank branches by city or name.
+* **Settings:** Dynamically update physical addresses and manage multiple email aliases.
+
+---
+
+## 🛠️ Installation & Local Setup
+
+Follow these steps to run the application on your local machine:
 
 ### 1. Prerequisites
-* Python 3.x
-* MySQL Server
-* Libraries: `pip install flask mysql-connector-python`
+Ensure you have the following installed:
+- **Python 3.x**
+- **MySQL Server**
+- Required Libraries:
+  ```bash
+  pip install flask mysql-connector-python
+2. Database Setup (Critical)
+The application relies on a database named BankDB.
 
-### 2. Database Configuration
-1. Log in to your MySQL terminal and create the schema:
-   ```sql
-   CREATE DATABASE IF NOT EXISTS BankDB;
-Import the provided SQL dump:
+Open your MySQL terminal/Workbench and log in:
+
+SQL
+
+CREATE DATABASE IF NOT EXISTS BankDB;
+Import the SQL Dump: Navigate to the project directory and run:
 
 Bash
 
-mysql -u root -p BankDB < db_dump.sql
-Update the db_config dictionary in app.py with your local credentials.
+mysql -u your_username -p BankDB < Dump20251219.sql
+3. Configuration
+Open app.py and update the db_config dictionary with your local MySQL credentials:
 
-3. Run the App
+Python
+
+db_config = {
+    'host': 'localhost',
+    'user': 'your_username',
+    'password': 'your_password',
+    'database': 'BankDB'
+}
+4. Running the Application
+Execute the following command in your terminal:
+
 Bash
 
 python app.py
-Open your browser at http://127.0.0.1:5000.
+Access the web interface at: http://127.0.0.1:5000
