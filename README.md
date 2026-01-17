@@ -61,9 +61,11 @@ The application relies on a MySQL database named **'BankDB'**. You must set this
    ```bash
    mysql -u root -p
    
-Step 3: Create the database:
+**Step 3: Create the database**
+```sql`
+CREATE DATABASE IF NOT EXISTS BankDB;```
+EXIT;
 
-```sql CREATE DATABASE IF NOT EXISTS BankDB;```
 
 
 Step 4: Import the provided SQL dump (Dump20251219.sql) into the database (Run this from the project directory where the dump file is located):
