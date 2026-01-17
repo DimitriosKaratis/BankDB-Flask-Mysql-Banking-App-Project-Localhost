@@ -51,34 +51,79 @@ Ensure you have the following installed:
 - Required Libraries:
   ```bash
   pip install flask mysql-connector-python
-2. Database Setup (Critical)
-The application relies on a database named BankDB.
+## 2. Database Setup (CRITICAL STEP)
+The application relies on a MySQL database named **'BankDB'**. You must set this up manually because the provided SQL dump file contains table structures but might not create the database itself.
 
-Open your MySQL terminal/Workbench and log in:
+**Step 1:** Open your terminal/command prompt.  
+**Step 2:** Log in to MySQL:
+```bash
+mysql -u root -p
+Step 3: Create the database:
 
 SQL
 
 CREATE DATABASE IF NOT EXISTS BankDB;
-Import the SQL Dump: Navigate to the project directory and run:
+EXIT;
+Step 4: Import the provided SQL dump (Dump20251219.sql) into the database (Run this from the project directory where the dump file is located):
 
 Bash
 
-mysql -u your_username -p BankDB < Dump20251219.sql
+mysql -u root -p BankDB < Dump20251219.sql
 3. Configuration
-Open app.py and update the db_config dictionary with your local MySQL credentials:
+The application connects to the database using credentials defined in app.py. Open app.py and look for the db_config dictionary (approx. line 11):
 
 Python
 
 db_config = {
     'host': 'localhost',
-    'user': 'your_username',
-    'password': 'your_password',
+    'user': 'root',
+    'password': 'YOUR_MYSQL_PASSWORD',  # Ensure this matches your local MySQL password
     'database': 'BankDB'
 }
-4. Running the Application
-Execute the following command in your terminal:
+Note: The current code may use the password '1234'. Change this if your local root password differs.
+
+4. How to Launch the App
+Navigate to the project folder in your terminal:
 
 Bash
 
-python app.py
-Access the web interface at: http://127.0.0.1:5000
+cd path/to/project_folder
+Run the Flask application:
+
+Bash
+
+python3 app.py
+Open your web browser and go to: http://127.0.0.1:5000
+
+📖 User Manual
+A. LOGIN
+Authenticate using a Customer TIN (Tax Identification Number).
+
+Example Valid TIN: 123456789 (User: Maria Papadopoulou).
+
+Enter any password to proceed.
+
+B. DASHBOARD
+Lists all accounts belonging to the customer with dynamic balances calculated via SQL Views (accounts_balance).
+
+C. MONEY TRANSFER (TRANSACTION)
+ACID Integrity: Uses start_transaction(), commit(), and rollback() to ensure money is never lost.
+
+Select source account, enter recipient Account Number and amount.
+
+D. PAY LOAN & CREDIT CARD
+Pay Loan: Real-time tracking of debt and account-based payments.
+
+Pay Credit Card: Uses a Double Transaction Strategy to re-adjust credit limits and deduct funds simultaneously.
+
+E. BRANCH LOCATOR & SETTINGS
+Branches: Full directory of physical bank branches.
+
+Settings: Update Physical Address and manage multiple Email aliases.
+
+⚙️ Technical Implementation Details
+Security: Prepared Statements for ALL queries to prevent SQL Injection.
+
+ID Management: Manual calculation of next TransactionID (MAX + 1) to ensure uniqueness.
+
+Frontend: Bootstrap 5 & Jinja2 templates.
