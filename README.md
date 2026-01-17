@@ -62,21 +62,22 @@ The application relies on a MySQL database named **'BankDB'**. You must set this
    mysql -u root -p
    
 **Step 3: Create the database**
-```sql`
-CREATE DATABASE IF NOT EXISTS BankDB;```
+```sql
+CREATE DATABASE IF NOT EXISTS BankDB;
 EXIT;
-
+```
 
 
 Step 4: Import the provided SQL dump (Dump20251219.sql) into the database (Run this from the project directory where the dump file is located):
 
  ```bash
-
 mysql -u root -p BankDB < Dump20251219.sql
-3. Configuration
+```
+
+### 3. Configuration
 The application connects to the database using credentials defined in app.py. Open app.py and look for the db_config dictionary (approx. line 11):
 
-Python
+```Python
 
 db_config = {
     'host': 'localhost',
@@ -85,21 +86,24 @@ db_config = {
     'database': 'BankDB'
 }
 Note: The current code may use the password '1234'. Change this if your local root password differs.
+```
 
-4. How to Launch the App
+### 4. How to Launch the App
 Navigate to the project folder in your terminal:
 
-Bash
+```bash
 
 cd path/to/project_folder
+```
 Run the Flask application:
 
-Bash
+```bash
 
 python3 app.py
+```
 Open your web browser and go to: http://127.0.0.1:5000
 
-📖 User Manual
+### 📖 User Manual
 A. LOGIN
 Authenticate using a Customer TIN (Tax Identification Number).
 
@@ -125,7 +129,7 @@ Branches: Full directory of physical bank branches.
 
 Settings: Update Physical Address and manage multiple Email aliases.
 
-⚙️ Technical Implementation Details
+### ⚙️ Technical Implementation Details
 Security: Prepared Statements for ALL queries to prevent SQL Injection.
 
 ID Management: Manual calculation of next TransactionID (MAX + 1) to ensure uniqueness.
