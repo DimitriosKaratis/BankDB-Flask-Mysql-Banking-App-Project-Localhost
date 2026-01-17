@@ -106,14 +106,18 @@ python3 app.py
 ```
 Open your web browser and go to: http://127.0.0.1:5000
 
-### 📖 User Manual
+## 📖 User Manual (Quick Start)
 
----
+#### **A. Available Test Accounts**
+You can use any of the following credentials (TIN) to explore the application. Any password will be accepted for demonstration purposes:
 
-#### **A. Login**
-* **Authentication:** Use a **Customer TIN** (Tax Identification Number) to log in.
-* **Credentials:** * **Example Valid TIN:** `123456789` (User: Maria Papadopoulou).
-    * **Password:** Enter any password to proceed (Development mode).
+| Customer Name | TIN (Username) | Account Number (One of many) |
+| :--- | :--- | :--- |
+| **Nikos Georgiou** | `987654321` | GR1034562345678901234567899 |
+| **Maria Papadopoulou** | `123456789` | GR1634441234567890123456789 |
+| **Elena Dimitriou** | `112233445` | GR1167895678901234567890121 |
+| **Kostas Vassilakis** | `223344556` | GR1478906789012345678901231 |
+| **Yiannis Papadakis** | `334455667` | GR1990128901234567890123453 |
 
 #### **B. Dashboard**
 * **Account Overview:** View all accounts linked to your profile.
